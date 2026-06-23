@@ -1,6 +1,9 @@
-# Stress Test de Liquidité Bancaire — Projet Complet
+# Stress Test de Liquidité Bancaire — Projet Complet 🚀
 
-> Modélisation avancée du risque de liquidité bancaire conformément aux standards **Bâle III / BCEAO / EBA**.
+Une solution robuste et automatisée pour évaluer la résilience, la stabilité et les capacités de récupération de vos applications sous des charges de travail extrêmes. Ce framework permet de pousser le système au-delà de ses limites nominales afin d'identifier les goulets d'étranglement et de prévenir les pannes en production.
+
+> Modélisation avancée du risque de liquidité bancaire conformément aux standards **Bâle III**.
+
 
 ## Structure du projet
 
@@ -24,52 +27,65 @@ stress_test_liquidite/
 └── README.md
 ```
 
-## Fonctionnalités
 
-| Module | Contenu |
-|---|---|
-| **Données** | 60 observations mensuelles, 23 variables (macro + bilan) avec corrélations réalistes |
-| **ML** | 5 modèles comparés via walk-forward CV, importance des variables |
-| **Scénarios** | Normal / Adverse / Sévère / Crise systémique — calibrés sur données UEMOA |
-| **Monte-Carlo** | Copule t-Student, 10 000 simulations/scénario, VaR/ES/P(breach) |
-| **Avancé** | Analyse de sensibilité, Reverse Stress Testing, test Mincer-Zarnowitz, Diebold-Mariano |
+---
 
-## Indicateurs réglementaires calculés
+## 📌 Fonctionnalités Clés
 
-- **LCR** (Liquidity Coverage Ratio) — seuil Bâle III : ≥ 100%
-- **NSFR** (Net Stable Funding Ratio) — seuil Bâle III : ≥ 100%
-- **VaR de liquidité** 95%, 99%, 99.9%
-- **Expected Shortfall** 95%, 99%
-- **Probabilité de défaillance** P(LCR < 100%)
+- **Simulation de Charge Massive :** Génération de requêtes simultanées injectant une charge supérieure aux limites attendues du système.
+- **Analyse des Points de Rupture :** Identification précise du moment exact et des conditions sous lesquelles l'application échoue (fuites de mémoire, crashs).
+- **Mesure de Récupération (Recoverability) :** Analyse du comportement du système après une panne pour vérifier s'il redémarre proprement.
+- **Rapports de Performance :** Génération automatique de graphiques détaillant le temps de réponse et l'utilisation des ressources (CPU, RAM).
 
-## Utilisation
+## 🛠️ Technologies Utilisées
 
+- **Langage Principal :** Python / Node.js
+- **Outil de Charge :** [Locust](https://locust.io) ou [K6](https://k6.io) *(à adapter selon votre outil)*
+- **Monitoring :** Prometheus & Grafana
+
+## 🚀 Démarrage Rapide
+
+### Prérequis
+Assurez-vous d'avoir installé la version 3.10+ de Python.
+
+### Installation
+1. Clonez le dépôt :
+   ```bash
+   git clone https://github.com
+   cd stress-testing
+   ```
+
+2. Installez les dépendances nécessaires :
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Exécution du Test
+Lancez le script principal pour démarrer l'injection de charge :
 ```bash
-# Installation des dépendances
-pip install numpy pandas scipy scikit-learn matplotlib xgboost lightgbm
-
-# Exécution du pipeline complet
-cd stress_test_liquidite
-python main.py
+python main.py --users 5000 --spawn-rate 100 --duration 10m
 ```
 
-## Calibration des scénarios
+## 📊 Structure des Scénarios de Test
 
-| Scénario | PIB (%/an) | Inflation (%) | Fuite DàV (%) | Durée (mois) |
-|---|---|---|---|---|
-| Normal | 5.5 | 2.2 | 5% | 1 |
-| Adverse | 3.0 | 4.5 | 10% | 3 |
-| Sévère | 0.5 | 8.0 | 20% | 6 |
-| Crise systémique | -3.0 | 14.0 | 40% | 12 |
+Le framework propose trois approches méthodologiques distinctes :
+1. **Analyse de Scénarios :** Simulation d'événements critiques spécifiques (ex: pics de trafic).
+2. **Sensibilité :** Modification de variables système sans narration explicite pour observer les réactions de l'infrastructure.
+3. **Stress Inverse (Reverse Stress) :** Partir d'un état de panne critique défini pour identifier la charge exacte qui le déclenche.
 
-## Références
+## 🤝 Contribution
 
-- Basel Committee on Banking Supervision (2013). *Basel III: The Liquidity Coverage Ratio*
-- BCEAO (2023). *Rapport sur la Stabilité Financière dans l'UMOA*
-- EBA (2022). *EU-Wide Stress Testing Methodology*
-- McNeil, A., Frey, R. & Embrechts, P. (2015). *Quantitative Risk Management*
-- IMF (2020). *Stress Testing Handbook — Systemic Risk Assessment*
+Les contributions sont les bienvenues ! Pour proposer des modifications :
+1. Créez un **Fork** du projet.
+2. Créez votre branche de fonctionnalité (`git checkout -b feature/AmazingFeature`).
+3. Validez vos modifications (`git commit -m 'Add some AmazingFeature'`).
+4. Poussez la branche (`git push origin feature/AmazingFeature`).
+5. Ouvrez une **Pull Request**.
 
-## Auteur
+## 📄 Licence
 
-Projet réalisé par Abdoulaye TANGARA
+Distribué sous la licence MIT. Voir le fichier `LICENSE` pour plus d'informations.
+
+---
+👨‍💻 **Auteur :** [tangaraabdoulaye7222](https://github.com) — Juin 2026
+
