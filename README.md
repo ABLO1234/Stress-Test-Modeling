@@ -72,4 +72,4 @@ python main.py
 
 ## Auteur
 
-Projet réalisé dans le cadre d'un Master d'Économie Quantitative — BCEAO / Mali
+Projet réalisé par Abdoulaye TANGARA
